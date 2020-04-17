@@ -1,16 +1,23 @@
 <template>
   <div id="app">
     <router-view />
+    {{ posts }}
   </div>
 </template>
 
 <script>
+import Constant from '@/Constant'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'App',
-  async mounted() {
-    const res = await this.$http.get('https://jsonplaceholder.typicode.com/todos/1')
-
-    console.log(res)
-  } 
+  computed: {
+    ...mapGetters({
+      posts: Constant.Getter.posts
+    })
+  },
+  async created() {
+    await this.$store.dispatch(Constant.Action.setPosts)
+  }
 }
 </script>
