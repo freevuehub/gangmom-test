@@ -1,13 +1,17 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "./registerServiceWorker";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import axios from 'axios'
 
-Vue.config.productionTip = false;
+import './assets/scss/common.scss'
+import './registerServiceWorker'
+
+Vue.config.productionTip = false
+Vue.prototype.$http = axios
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')
