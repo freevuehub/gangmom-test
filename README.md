@@ -1,4 +1,4 @@
-# coding-test
+# gangmom-test
 
 ## Project setup
 ```
