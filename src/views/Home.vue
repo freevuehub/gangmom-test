@@ -1,12 +1,16 @@
 <template>
   <div class="home">
-    Home
+    <post-list />
   </div>
 </template>
 
 <script>
+import { PostList } from '@/containers'
 
 export default {
   name: 'Home',
+  components: {
+    PostList,
+  },
 };
 </script>

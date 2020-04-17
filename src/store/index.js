@@ -10,6 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     posts: [],
+    postCount: 0,
   },
   mutations: {
     [Constant.Mutation.posts]: (state, payload) => {
@@ -24,6 +25,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    [Constant.Getter.posts]: (state) => state.posts
+    [Constant.Getter.posts]: (state) => {
+      return state.posts
+    }
   }
 })
