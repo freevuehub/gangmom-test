@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <post-list />
-    <router-view />
+    <div class="container">
+      <post-list />
+    </div>
+    <router-view class="detail-view" />
   </div>
 </template>
 
@@ -19,3 +21,20 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .detail-view {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+  }
+}
+</style>

@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     posts: {
       list: [],
-      postCount: 8,
+      count: 0,
     },
     detail: {},
   },
@@ -19,7 +19,10 @@ export default new Vuex.Store({
     },
     [Constant.Mutation.detail]: (state, payload) => {
       state.detail = payload
-    }
+    },
+    [Constant.Mutation.postCount]: (state, payload) => {
+      state.posts.count = payload
+    },
   },
   actions: {
     [Constant.Action.setPosts]: async ({ commit }) => {
@@ -32,10 +35,19 @@ export default new Vuex.Store({
 
       commit(Constant.Mutation.detail, data)
     },
+    [Constant.Action.setPostCount]: ({ state, commit }, count) => {
+      console.log(state)
+
+      return new Promise((resolve) => {
+        commit(Constant.Mutation.postCount, state.posts.count + count)
+
+        return resolve()
+      })
+    }
   },
   getters: {
     [Constant.Getter.posts]: (state) => {
-      return state.posts.list.splice(0, state.posts.postCount)
+      return state.posts.list.splice(0, state.posts.count)
     }
   }
 })
