@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     posts: {
       list: [],
-      postCount: 0,
+      postCount: 8,
     },
     detail: {},
   },
@@ -35,7 +35,7 @@ export default new Vuex.Store({
   },
   getters: {
     [Constant.Getter.posts]: (state) => {
-      return state.posts.list
+      return state.posts.list.splice(0, state.posts.postCount)
     }
   }
 })
