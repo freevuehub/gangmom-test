@@ -1,20 +1,24 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Constant from '@/Constant'
-import {
-  get
-} from '@/axios'
+import { get } from '@/axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    posts: [],
-    postCount: 0,
+    posts: {
+      list: [],
+      postCount: 0,
+    },
+    detail: {},
   },
   mutations: {
     [Constant.Mutation.posts]: (state, payload) => {
-      state.posts = payload
+      state.posts.list = payload
+    },
+    [Constant.Mutation.detail]: (state, payload) => {
+      state.detail = payload
     }
   },
   actions: {
@@ -22,11 +26,16 @@ export default new Vuex.Store({
       const { data } = await get.posts
 
       commit(Constant.Mutation.posts, data)
-    }
+    },
+    [Constant.Action.setDetail]: async ({ commit }, id) => {
+      const { data } = await get.detail(id)
+
+      commit(Constant.Mutation.detail, data)
+    },
   },
   getters: {
     [Constant.Getter.posts]: (state) => {
-      return state.posts
+      return state.posts.list
     }
   }
 })

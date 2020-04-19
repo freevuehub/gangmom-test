@@ -5,13 +5,8 @@
 </template>
 
 <script>
-import Constant from '@/Constant'
-
 export default {
   name: 'App',
-  async created() {
-    await this.$store.dispatch(Constant.Action.setPosts)
-  }
 }
 </script>
 
