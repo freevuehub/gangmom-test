@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view />
-    <h1 ref="load">loading...</h1>
+    <h1 v-if="loadingView" ref="load">loading...</h1>
   </div>
 </template>
 
@@ -11,14 +11,28 @@ import 'intersection-observer'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      loadingView: true,
+    }
+  },
   mounted() {
     this.initIntersectionObserver()
   },
   methods: {
     initIntersectionObserver () {
-      const io = new IntersectionObserver((entries, observer) => {
-        console.log(entries, observer)
-        this.$store.dispatch(Constant.Action.setPostCount, 8)
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(async (entry) => {
+          try {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            await this.$store.dispatch(Constant.Action.setPostCount, 8)
+          } catch {
+            this.loadingView = false
+          }
+        });
       })
       
       io.observe(this.$refs.load)

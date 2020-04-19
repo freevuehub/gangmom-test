@@ -36,18 +36,24 @@ export default new Vuex.Store({
       commit(Constant.Mutation.detail, data)
     },
     [Constant.Action.setPostCount]: ({ state, commit }, count) => {
-      console.log(state)
+      return new Promise((resolve, reject) => {
+        const addCount = state.posts.count + count
+        
+        if (state.posts.list.length && state.posts.list.length <= addCount) {
+          return reject()
+        }
 
-      return new Promise((resolve) => {
-        commit(Constant.Mutation.postCount, state.posts.count + count)
-
-        return resolve()
+        setTimeout(() => {
+          commit(Constant.Mutation.postCount, addCount)
+  
+          return resolve()
+        }, 300)
       })
     }
   },
   getters: {
     [Constant.Getter.posts]: (state) => {
-      return state.posts.list.splice(0, state.posts.count)
+      return state.posts.list.slice(0, state.posts.count)
     }
   }
 })
