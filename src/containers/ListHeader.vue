@@ -1,6 +1,6 @@
 <template>
   <div class="list-header">
-    <grid-btn class="grid" />
+    <grid-btn :class="viewMode" v-model="viewMode" />
     <CountSelect v-model="count" />
   </div>
 </template>
@@ -17,16 +17,25 @@ export default {
   data() {
     return {
       count: this.$route.query.count || '8',
+      viewMode: this.$route.query.mode || 'list',
     }
   },
   watch: {
     count(val) {
       this.$router.push({
         query: {
+          ...this.$route.query,
           count: val,
         },
       })
-      console.log(val)
+    },
+    viewMode(val) {
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          mode: val,
+        },
+      })
     },
   },
 }
@@ -39,5 +48,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  height: 60px;
 }
 </style>

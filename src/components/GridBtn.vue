@@ -1,5 +1,5 @@
 <template>
-  <button class="grid-btn">
+  <button class="grid-btn" @click.prevent="onModeChange">
     <span></span>
     <span></span>
     <span></span>
@@ -10,6 +10,27 @@
 <script>
 export default {
   name: 'GridBtn',
+  model: {
+    event: 'change',
+    prop: 'value',
+  },
+  props: {
+    value: String,
+  },
+  methods: {
+    onModeChange() {
+      switch (this.value) {
+        case 'list':
+          this.$emit('change', 'grid')
+
+          break
+        case 'grid':
+          this.$emit('change', 'list')
+
+          break
+      }
+    },
+  },
 }
 </script>
 
