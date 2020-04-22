@@ -41,6 +41,7 @@ export default {
   height: 45px;
   flex-wrap: wrap;
   justify-content: space-between;
+  cursor: pointer;
   span {
     display: block;
     background-color: #d3121a;

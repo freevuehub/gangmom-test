@@ -14,3 +14,7 @@ export {
   default as CountSelect
 }
 from './CountSelect.vue'
+export {
+  default as DetailHeader
+}
+from './DetailHeader.vue'

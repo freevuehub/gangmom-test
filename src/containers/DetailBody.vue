@@ -1,9 +1,6 @@
 <template>
   <div class="detail-body">
-    <div>
-      <button @click.prevent="onGoBack">뒤로</button>
-      <h1>{{ detail.title }}</h1>
-    </div>
+    <detail-header />
     <div>
       <p>{{ detail.body }}</p>
     </div>
@@ -13,17 +10,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import Constant from '@/Constant'
+import { DetailHeader } from '@/components'
 
 export default {
+  components: {
+    DetailHeader,
+  },
   computed: {
     ...mapGetters({
       detail: Constant.Getter.detail,
     }),
-  },
-  methods: {
-    onGoBack() {
-      this.$router.back()
-    },
   },
 }
 </script>
@@ -32,5 +28,6 @@ export default {
 .detail-body {
   max-width: 800px;
   margin: 0 auto;
+  padding-top: 40px;
 }
 </style>
