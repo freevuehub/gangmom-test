@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <router-view />
-    <h1 v-if="loadingView" ref="load">loading...</h1>
+    <Loading v-if="loadingView" ref="load" />
   </div>
 </template>
 
 <script>
 import Constant from '@/Constant'
+import { Loading } from '@/components'
 import 'intersection-observer'
 
 export default {
   name: 'App',
+  components: {
+    Loading,
+  },
   data() {
     return {
       loadingView: true,
@@ -20,24 +24,24 @@ export default {
     this.initIntersectionObserver()
   },
   methods: {
-    initIntersectionObserver () {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(async (entry) => {
+    initIntersectionObserver() {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(async entry => {
           try {
             if (!entry.isIntersecting) {
-              return;
+              return
             }
 
             await this.$store.dispatch(Constant.Action.setPostCount, 8)
           } catch {
             this.loadingView = false
           }
-        });
+        })
       })
-      
-      io.observe(this.$refs.load)
+
+      io.observe(this.$refs.load.$el)
     },
-  }
+  },
 }
 </script>
 

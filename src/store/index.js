@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Constant from '@/Constant'
-import { get } from '@/axios'
+import {
+  get
+} from '@/axios'
 
 Vue.use(Vuex)
 
@@ -25,29 +27,40 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    [Constant.Action.setPosts]: async ({ commit }) => {
-      const { data } = await get.posts
+    [Constant.Action.setPosts]: async ({
+      commit
+    }) => {
+      const {
+        data
+      } = await get.posts
 
       commit(Constant.Mutation.posts, data)
     },
-    [Constant.Action.setDetail]: async ({ commit }, id) => {
-      const { data } = await get.detail(id)
+    [Constant.Action.setDetail]: async ({
+      commit
+    }, id) => {
+      const {
+        data
+      } = await get.detail(id)
 
       commit(Constant.Mutation.detail, data)
     },
-    [Constant.Action.setPostCount]: ({ state, commit }, count) => {
+    [Constant.Action.setPostCount]: ({
+      state,
+      commit
+    }, count) => {
       return new Promise((resolve, reject) => {
         const addCount = state.posts.count + count
-        
+
         if (state.posts.list.length && state.posts.list.length <= addCount) {
           return reject()
         }
 
         setTimeout(() => {
           commit(Constant.Mutation.postCount, addCount)
-  
+
           return resolve()
-        }, 300)
+        }, 800)
       })
     }
   },
