@@ -8,7 +8,7 @@
 <script>
 import Constant from '@/Constant'
 import { Loading } from '@/components'
-import 'intersection-observer'
+import 'intersection-observer' // IE 대응
 
 export default {
   name: 'App',
