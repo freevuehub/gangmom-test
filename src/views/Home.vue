@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <div>
+      <button>그리드</button>
+    </div>
     <div class="container">
       <post-list />
     </div>
@@ -18,8 +21,8 @@ export default {
   },
   async created() {
     await this.$store.dispatch(Constant.Action.setPosts)
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +38,7 @@ export default {
     right: 0;
     bottom: 0;
     background: #fff;
+    z-index: 10;
   }
 }
 </style>

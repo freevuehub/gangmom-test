@@ -62,6 +62,27 @@ export default new Vuex.Store({
           return resolve()
         }, 800)
       })
+    },
+    [Constant.Action.setDetailToList]: ({
+      state,
+      commit,
+      dispatch
+    }, id) => {
+      return new Promise(async (resolve, reject) => {
+        if (!state.posts.list.length) {
+          await dispatch(Constant.Action.setPosts)
+        }
+
+        const [detail] = state.posts.list.filter((item) => item.id === Number(id))
+
+        if (!detail) {
+          return reject()
+        }
+
+        commit(Constant.Mutation.detail, detail)
+
+        return resolve()
+      })
     }
   },
   getters: {
@@ -70,6 +91,6 @@ export default new Vuex.Store({
     },
     [Constant.Getter.detail]: (state) => {
       return state.detail
-    }
+    },
   }
 })

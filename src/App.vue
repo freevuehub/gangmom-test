@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div>
-      <button>그리드</button>
-    </div>
     <router-view />
     <Loading class="load" v-if="loadingView" ref="load" />
   </div>

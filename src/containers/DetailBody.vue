@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="detail-body">
     <div>
+      <button @click.prevent="onGoBack">뒤로</button>
       <h1>{{ detail.title }}</h1>
     </div>
     <div>
@@ -19,5 +20,17 @@ export default {
       detail: Constant.Getter.detail,
     }),
   },
+  methods: {
+    onGoBack() {
+      this.$router.back()
+    },
+  },
 }
 </script>
+
+<style lang="scss">
+.detail-body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+</style>

@@ -3,6 +3,7 @@ export default {
     setPosts: 'ACTION/SET/POST',
     setDetail: 'ACTION/SET/DETAIL',
     setPostCount: 'ACTION/SET/POST/COUNT',
+    setDetailToList: 'ACTION/SET/DETAIL/TO/LIST',
   },
   Mutation: {
     posts: 'MUTATION/POST',
