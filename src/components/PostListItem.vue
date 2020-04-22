@@ -48,11 +48,52 @@ export default {
     align-items: center;
     img {
       display: block;
-      margin-right: 10px;
+      margin-right: auto;
       width: 150px;
+      border-radius: 4px;
     }
-    h3 {
-      font-size: 20px;
+    .txt {
+      h3 {
+        margin-bottom: 15px;
+        color: #d3121a;
+        font-size: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        white-space: nowrap;
+      }
+      p {
+        color: #2e2e2e;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+  &.list {
+    width: 100%;
+    a {
+      .txt {
+        width: 83%;
+      }
+    }
+  }
+  &.grid {
+    width: 23%;
+    margin: 0 auto 30px;
+    a {
+      flex-direction: column;
+      img {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .txt {
+        width: 100%;
+      }
     }
   }
 }

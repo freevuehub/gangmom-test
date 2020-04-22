@@ -10,6 +10,9 @@
 <script>
 export default {
   name: 'loading',
+  mounted() {
+    console.log(this.$route)
+  },
 }
 </script>
 

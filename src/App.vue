@@ -31,6 +31,7 @@ export default {
             if (!entry.isIntersecting) {
               return
             }
+
             await this.$store.dispatch(
               Constant.Action.setPostCount,
               Number(this.$route.query.count || 8),

@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <post-list-item
-      v-for="item in posts"
-      :key="item.id"
-      :item="item"
-    />
+  <div class="post-list">
+    <post-list-item :class="itemClass" v-for="item in posts" :key="item.id" :item="item" />
   </div>
 </template>
 
@@ -18,9 +14,19 @@ export default {
     PostListItem,
   },
   computed: {
+    itemClass() {
+      return this.$route.query.mode || 'list'
+    },
     ...mapGetters({
-      posts: Constant.Getter.posts
-    })
+      posts: Constant.Getter.posts,
+    }),
   },
 }
 </script>
+
+<style lang="scss">
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
