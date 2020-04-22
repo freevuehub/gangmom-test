@@ -37,8 +37,16 @@ export default new Vuex.Store({
       const {
         data
       } = await get.posts
+      const users = await get.users
 
-      commit(Constant.Mutation.posts, data)
+      commit(Constant.Mutation.posts, data.map((item) => {
+        const [user] = users.data.filter((user) => user.id === item.userId)
+
+        return {
+          ...item,
+          user
+        }
+      }))
     },
     [Constant.Action.setDetail]: async ({
       commit

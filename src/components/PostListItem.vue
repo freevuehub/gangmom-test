@@ -4,7 +4,8 @@
       <img :src="imgUrl" :alt="imgUrl" />
       <div class="txt">
         <h3>{{ item.title }}</h3>
-        <p>{{ item.body }}</p>
+        <p class="body">{{ item.body }}</p>
+        <p class="writer">{{ item.user.name }}</p>
       </div>
     </router-link>
   </div>
@@ -32,7 +33,6 @@ export default {
       }
     },
     imgUrl() {
-      console.log(this.item)
       const ran = Math.ceil(Math.random() * this.imgList.length)
 
       return this.imgList[ran - 1]
@@ -63,7 +63,7 @@ export default {
         -webkit-line-clamp: 1;
         white-space: nowrap;
       }
-      p {
+      .body {
         color: #2e2e2e;
         white-space: normal;
         overflow: hidden;
@@ -72,6 +72,13 @@ export default {
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+      }
+      .writer {
+        color: #2e2e2e;
+        text-align: right;
+        margin-top: 20px;
+        padding-right: 20px;
+        font-style: italic;
       }
     }
   }
