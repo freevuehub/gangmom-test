@@ -32,6 +32,7 @@ export default {
       }
     },
     imgUrl() {
+      console.log(this.item)
       const ran = Math.ceil(Math.random() * this.imgList.length)
 
       return this.imgList[ran - 1]
@@ -94,6 +95,24 @@ export default {
       }
       .txt {
         width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    &.grid {
+      width: 100%;
+      margin-bottom: 20px;
+      a {
+        width: 100%;
+        flex-direction: row;
+        img {
+          width: 150px;
+          margin-bottom: 0;
+        }
+        .txt {
+          width: calc(100% - 160px);
+        }
       }
     }
   }

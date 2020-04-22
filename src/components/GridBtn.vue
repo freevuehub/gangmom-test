@@ -69,5 +69,10 @@ export default {
       }
     }
   }
+  @media screen and (max-width: 640px) {
+    & {
+      display: none;
+    }
+  }
 }
 </style>
