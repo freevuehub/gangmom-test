@@ -18,3 +18,7 @@ export {
   default as DetailHeader
 }
 from './DetailHeader.vue'
+export {
+  default as CommentsList
+}
+from './CommentsList.vue'

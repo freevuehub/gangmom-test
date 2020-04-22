@@ -77,8 +77,9 @@ export default {
   &.list {
     width: 100%;
     a {
+      width: 100%;
       .txt {
-        width: 83%;
+        width: calc(100% - 160px);
       }
     }
   }
