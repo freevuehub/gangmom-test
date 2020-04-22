@@ -25,7 +25,7 @@ export default {
     display: block;
     width: 10px;
     height: 10px;
-    background-color: #ffd4d6;
+    background-color: #d3121a;
     border-radius: 50%;
     animation: fade linear 0.8s infinite;
 

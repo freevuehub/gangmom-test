@@ -6,3 +6,7 @@ export {
   default as DetailBody
 }
 from './DetailBody.vue'
+export {
+  default as ListHeader
+}
+from './ListHeader.vue'

@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <div>
-      <button>그리드</button>
-    </div>
+    <list-header class="header" />
     <div class="container">
       <post-list />
     </div>
@@ -12,11 +10,12 @@
 
 <script>
 import Constant from '@/Constant'
-import { PostList } from '@/containers'
+import { PostList, ListHeader } from '@/containers'
 
 export default {
   name: 'Home',
   components: {
+    ListHeader,
     PostList,
   },
   async created() {
@@ -27,8 +26,15 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
   .container {
-    max-width: 1200px;
+    padding-top: 60px;
+    max-width: 960px;
     margin: 0 auto;
   }
   .detail-view {

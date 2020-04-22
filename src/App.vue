@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view />
-    <Loading class="load" v-if="loadingView" ref="load" />
+    <loading class="load" v-if="loadingView" ref="load" />
   </div>
 </template>
 
@@ -31,8 +31,10 @@ export default {
             if (!entry.isIntersecting) {
               return
             }
-
-            await this.$store.dispatch(Constant.Action.setPostCount, 8)
+            await this.$store.dispatch(
+              Constant.Action.setPostCount,
+              Number(this.$route.query.count || 8),
+            )
           } catch {
             this.loadingView = false
           }

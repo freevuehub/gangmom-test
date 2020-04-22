@@ -73,7 +73,7 @@ export default new Vuex.Store({
           await dispatch(Constant.Action.setPosts)
         }
 
-        const [detail] = state.posts.list.filter((item) => item.id === Number(id))
+        const [detail] = await state.posts.list.filter((item) => item.id === Number(id))
 
         if (!detail) {
           return reject()
