@@ -1,8 +1,21 @@
 <template>
   <div class="detail-body">
     <detail-header />
-    <div>
+    <div class="content">
+      <h1>{{ detail.title }}</h1>
       <p>{{ detail.body }}</p>
+    </div>
+    <div class="comment">
+      <ul>
+        <li v-for="item in comments" :key="item.id">
+          <p v-html="buildHtml(item.body)"></p>
+          <div>
+            <p>{{ item.name }}</p>
+            <p>{{ item.email }}</p>
+          </div>
+          {{ item }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -17,8 +30,14 @@ export default {
     DetailHeader,
   },
   computed: {
+    buildHtml() {
+      return html => {
+        return html.replace(/\n/g, '<br>')
+      }
+    },
     ...mapGetters({
       detail: Constant.Getter.detail,
+      comments: Constant.Getter.comments,
     }),
   },
 }

@@ -26,6 +26,10 @@ export default {
     // await this._fetchDetail()
 
     await this._fetchDetailToList()
+    await this.$store.dispatch(
+      Constant.Action.setComments,
+      this.$route.params.id,
+    )
   },
   methods: {
     async _fetchDetail() {

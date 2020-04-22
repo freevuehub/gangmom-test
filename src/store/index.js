@@ -14,6 +14,7 @@ export default new Vuex.Store({
       count: 0,
     },
     detail: {},
+    comments: [],
   },
   mutations: {
     [Constant.Mutation.posts]: (state, payload) => {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     },
     [Constant.Mutation.postCount]: (state, payload) => {
       state.posts.count = payload
+    },
+    [Constant.Mutation.comments]: (state, payload) => {
+      state.comments = payload
     },
   },
   actions: {
@@ -83,6 +87,15 @@ export default new Vuex.Store({
 
         return resolve()
       })
+    },
+    [Constant.Action.setComments]: async ({
+      commit
+    }, id) => {
+      const {
+        data
+      } = await get.comments(id)
+
+      commit(Constant.Mutation.comments, data)
     }
   },
   getters: {
@@ -91,6 +104,9 @@ export default new Vuex.Store({
     },
     [Constant.Getter.detail]: (state) => {
       return state.detail
+    },
+    [Constant.Getter.comments]: (state) => {
+      return state.comments
     },
   }
 })
