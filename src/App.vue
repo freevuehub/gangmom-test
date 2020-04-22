@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+    <div>
+      <button>그리드</button>
+    </div>
     <router-view />
-    <Loading v-if="loadingView" ref="load" />
+    <Loading class="load" v-if="loadingView" ref="load" />
   </div>
 </template>
 
@@ -51,5 +54,8 @@ export default {
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  .load {
+    margin: 20px auto;
+  }
 }
 </style>

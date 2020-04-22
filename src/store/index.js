@@ -67,6 +67,9 @@ export default new Vuex.Store({
   getters: {
     [Constant.Getter.posts]: (state) => {
       return state.posts.list.slice(0, state.posts.count)
+    },
+    [Constant.Getter.detail]: (state) => {
+      return state.detail
     }
   }
 })
